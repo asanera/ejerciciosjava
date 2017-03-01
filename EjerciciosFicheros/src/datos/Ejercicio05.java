@@ -23,18 +23,12 @@ public class Ejercicio05 {
 //	Caracteres : 8 Líneas : 2
 //	Caracteres : 17 Líneas : 1
 //	Nota: Se considerará que la longitud máxima de una línea es de 255 caracteres
-	
+	private static int[] numCaracteres = new int[255];
 	public static void main(String[] args) {
-	File fichero = new File("fejercicio05.txt");
-	File ficheAux = new File("fauxEjercicio05,txt");
-		if (fichero.exists()){
-			if (!ficheAux.exists()){
-				try {
-					ficheAux.createNewFile();
-				} catch (IOException e) {
-					System.out.println(e.getMessage());
-				}
-			}
+		File fichero = new File("fejercicio05.txt");
+	
+		if (fichero.exists()) {
+			
 			FileReader fr = null;
 			BufferedReader br = null;
 			FileWriter fw = null;
@@ -42,37 +36,47 @@ public class Ejercicio05 {
 			try {
 				fr = new FileReader(fichero);
 				br = new BufferedReader(fr);
-				
-				fw = new FileWriter(ficheAux);
-				bw = new BufferedWriter(fw);
-						
+			
 				String linea;
-				int numLineas = 0 , numChar;
-				while((linea = br.readLine()) != null){
-						numLineas++;
-					    numChar = linea.length();
-						bw.write(numLineas+";"+numChar+";");
-						
+				
+				while ((linea = br.readLine()) != null) {
+					comprobarLinea(linea);
+
 				}
-				fr.close();
-				br.close();
-				
-				FileReader fra = new FileReader(ficheAux);
-				BufferedReader bra = new BufferedReader(fra);
-				String [] partes;
-				partes =  bra.readLine().split(";");
-				
-				
+				mostrarResultado();
+
 			} catch (FileNotFoundException e) {
 				System.out.println(e.getMessage());
-				
+
 			} catch (IOException e) {
 				System.out.println(e.getMessage());
+			} finally {
+				try {
+					fr.close();
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
-			
-		}else
+
+		} else
 			System.out.println("El fichero no existe");
 
+	}
+	private static void mostrarResultado() {
+		for (int i = 0; i < numCaracteres.length; i++) {
+			if (numCaracteres[i]!=0){
+				System.out.println("Caracteres: "+ i + " Lineas : " + numCaracteres[i]);
+			}
+		}
+		
+	}
+	private static void comprobarLinea(String linea) {
+		int num = linea.length();
+		numCaracteres[num]++;
+		
 	}
 
 }
