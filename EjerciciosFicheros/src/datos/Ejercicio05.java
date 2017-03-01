@@ -23,16 +23,17 @@ public class Ejercicio05 {
 //	Caracteres : 8 Líneas : 2
 //	Caracteres : 17 Líneas : 1
 //	Nota: Se considerará que la longitud máxima de una línea es de 255 caracteres
+	
+
 	private static int[] numCaracteres = new int[255];
 	public static void main(String[] args) {
 		File fichero = new File("fejercicio05.txt");
 	
 		if (fichero.exists()) {
-			
+	
 			FileReader fr = null;
 			BufferedReader br = null;
-			FileWriter fw = null;
-			BufferedWriter bw = null;
+		
 			try {
 				fr = new FileReader(fichero);
 				br = new BufferedReader(fr);
@@ -55,7 +56,7 @@ public class Ejercicio05 {
 					fr.close();
 					br.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 

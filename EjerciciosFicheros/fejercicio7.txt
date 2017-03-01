@@ -1,0 +1,1 @@
+id01234; Antonio Perez Pozo; 1234ASD; 654321321; español; 200,2; 113,3; 98,4; 546,5
